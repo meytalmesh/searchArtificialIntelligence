@@ -134,25 +134,36 @@ public class SwitchingNumbers implements IGame{
 
 
     public boolean isSolvable() {
-        int inversions = 0;
+//        int inversions = 0;
+//
+//        for (int i = 0; i < this.size() * this.size(); i++) {
+//            int currentRow = i / this.size();
+//            int currentCol = i % this.size();
+//
+//            for (int j = i; j < this.size() * this.size(); j++) {
+//                int row = j / this.size();
+//                int col = j % this.size();
+//
+//                if (tileAt(row, col) != 0 && tileAt(row, col) < tileAt(currentRow, currentCol)) {
+//                    inversions++;
+//                }
+//            }
+//        }
+//
+//        if (copyArr.length % 2 != 0 && inversions % 2 != 0) return false;
+//        if (copyArr.length % 2 == 0 && (inversions) % 2 == 0) return false;
 
-        for (int i = 0; i < this.size() * this.size(); i++) {
-            int currentRow = i / this.size();
-            int currentCol = i % this.size();
-
-            for (int j = i; j < this.size() * this.size(); j++) {
-                int row = j / this.size();
-                int col = j % this.size();
-
-                if (tileAt(row, col) != 0 && tileAt(row, col) < tileAt(currentRow, currentCol)) {
-                    inversions++;
+        int [] index = new int[10];
+        for(int i=0; i<N;i++){
+            for(int j=0;j<N;j++){
+                if(copyArr[i][j]<0 || copyArr[i][j]>9 || index[copyArr[i][j]] != 0){
+                    return false;
+                }
+                else {
+                    index[copyArr[i][j]] =1;
                 }
             }
         }
-
-        if (copyArr.length % 2 != 0 && inversions % 2 != 0) return false;
-        if (copyArr.length % 2 == 0 && (inversions) % 2 == 0) return false;
-
         return true;
     }
 

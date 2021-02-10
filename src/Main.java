@@ -1,6 +1,7 @@
 import Problem.IGame;
 import Problem.SwitchingNumbers;
 import SearchAlgorithms.AStar;
+import SearchAlgorithms.IDAStar;
 import SearchAlgorithms.ProblemSolver;
 
 
@@ -41,10 +42,18 @@ public class Main {
 
 //           //check a star function
 //        SwitchingNumbers b = new SwitchingNumbers(9);
-//        int[][] small = {{3, 1, 2}, { 5, 6,4}, {7,8, 9}};
+//        int[][] small = {{3, 1, 2},{ 5, 6,4}, {7,8, 9}};
 //        b.setPuzzle(small);
 //        ProblemSolver aStar=new AStar();
 //        aStar.solvePuzzle(b);
+
+
+////         check ida star function
+        SwitchingNumbers b = new SwitchingNumbers(9);
+        int[][] small = {{ 5, 6,4},{3, 1, 2}, {7,8, 9}};
+        b.setPuzzle(small);
+        ProblemSolver aStar=new IDAStar();
+        aStar.solvePuzzle(b);
     }
 
 }
