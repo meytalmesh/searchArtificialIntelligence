@@ -33,10 +33,10 @@ public class SwitchingNumbers implements IGame{
         }
         for (int i = 0; i < N; i++) {
             for (int j = 0; j < N; j++) {
-                if(j+1<3){
+                if(j+1<N){
                     this.neighbors.add(generateNeighbor(i,j,i,j+1));
                 }
-                if(i+1<3){
+                if(i+1<N){
                     this.neighbors.add(generateNeighbor(i,j,i+1,j));
                 }
             }

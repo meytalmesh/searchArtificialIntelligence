@@ -16,7 +16,7 @@ public class IDAStar implements ProblemSolver{
 
     @Override
     public void solvePuzzle(IGame game) {
-        minF=19;
+        minF=20;
         closed_list_hash = new HashSet<>();
         int numIteration=0;
         IGame goal= null;
