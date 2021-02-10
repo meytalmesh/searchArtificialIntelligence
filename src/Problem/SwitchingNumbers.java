@@ -1,9 +1,8 @@
 package Problem;
 
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.HashSet;
-import java.util.Random;
+import com.sun.corba.se.impl.resolver.SplitLocalResolverImpl;
+
+import java.util.*;
 
 public class SwitchingNumbers implements IGame{
 
@@ -20,11 +19,43 @@ public class SwitchingNumbers implements IGame{
 
     private Collection<IGame> neighbors;
 
+    public SwitchingNumbers(int [][] arr, int g,int n){
+        this.copyArr=arr;
+        this.g=g;
+        this.N=n;
+    }
     @Override
     public Collection<IGame> getNeighbors() {
-        return null;
-    }
+        if (this.neighbors != null) return this.neighbors;
+        else {
+            this.neighbors = new ArrayList<IGame>();
 
+        }
+        for (int i = 0; i < N; i++) {
+            for (int j = 0; j < N; j++) {
+                if(j+1<3){
+                    this.neighbors.add(generateNeighbor(i,j,i,j+1));
+                }
+                if(i+1<3){
+                    this.neighbors.add(generateNeighbor(i,j,i+1,j));
+                }
+            }
+        }
+
+        return this.neighbors;
+    }
+    private IGame generateNeighbor(int row1, int col1, int row2, int col2) {
+        int[][] array = new int[N][N];
+        for (int i = 0; i < N; i++) {
+            for (int j = 0; j < N; j++) {
+                array[i][j] = copyArr[i][j];
+            }
+        }
+        int temp=copyArr[row1][col1];
+        array[row1][col1] = copyArr[row2][col2];
+        array[row2][col2]=temp;
+        return new SwitchingNumbers(array, this.g + 1, this.N);
+    }
     @Override
     public double H() {
         return this.calculateManhattanDistance();

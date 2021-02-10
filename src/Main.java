@@ -16,6 +16,15 @@ public class Main {
         System.out.println(b);
         System.out.println(b.H());
 
+//        SwitchingNumbers b = new SwitchingNumbers(9);
+//        int[][] small = {{3, 1, 2}, {4, 5, 6}, {7,8, 9}};
+//        b.setPuzzle(small);
+//
+//        Collection<IGame> temp=b.getNeighbors();
+//        for (IGame bourd : temp) {
+//            System.out.println(bourd);
+//        }
+
 
     }
 
