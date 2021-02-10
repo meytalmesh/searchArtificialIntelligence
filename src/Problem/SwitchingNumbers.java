@@ -153,10 +153,10 @@ public class SwitchingNumbers implements IGame{
 //        if (copyArr.length % 2 != 0 && inversions % 2 != 0) return false;
 //        if (copyArr.length % 2 == 0 && (inversions) % 2 == 0) return false;
 
-        int [] index = new int[10];
+        int [] index = new int[N*N+1];
         for(int i=0; i<N;i++){
             for(int j=0;j<N;j++){
-                if(copyArr[i][j]<0 || copyArr[i][j]>9 || index[copyArr[i][j]] != 0){
+                if(copyArr[i][j]<0 || copyArr[i][j]>N*N || index[copyArr[i][j]] != 0){
                     return false;
                 }
                 else {
