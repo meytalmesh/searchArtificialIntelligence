@@ -16,7 +16,7 @@ public class IDAStar implements ProblemSolver{
 
     @Override
     public void solvePuzzle(IGame game) {
-        minF=15;
+        minF=19;
         closed_list_hash = new HashSet<>();
         int numIteration=0;
         IGame goal= null;
@@ -42,6 +42,7 @@ public class IDAStar implements ProblemSolver{
 
     }
     private IGame iteration (IGame game){
+        g=0;
         open_list = new PriorityQueue<>(new Comparator<IGame>() {
             @Override
             public int compare(IGame o1, IGame o2) {
@@ -60,17 +61,17 @@ public class IDAStar implements ProblemSolver{
             IGame current = open_list.poll();
             if(current.isGoal()){
                 goal = current;
-                end = System.currentTimeMillis();
                 System.out.println("Goal found!");
-                return current;
+                return goal;
 //                break;
             }
-            if(closed_list_hash.contains(current)){
+/*            if(closed_list_hash.contains(current)){
                 System.exit(-1);
-            }
+            }*/
             for (IGame neighbor : current.getNeighbors()) {
                 neighbor.setG(g);
                 double neighbor_cost = neighbor.F();
+
                 if(closed_list_hash.contains(neighbor) || neighbor_cost>=minF){
                     continue;
                 }
