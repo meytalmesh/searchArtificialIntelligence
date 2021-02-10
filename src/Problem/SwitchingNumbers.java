@@ -65,12 +65,22 @@ public class SwitchingNumbers implements IGame{
     @Override
     public boolean isGoal() {
 
-        if (tileAt(N-1, N-1) != 0) return false;        // prune
-        for (int i = 0; i < (N * N) - 1; i++) {
-            int row = (int) Math.floor((i) / N);
-            int col = i % N;
-            if(tileAt(row, col) != i + 1){
-                return false;
+//        if (tileAt(N-1, N-1) != 0) return false;        // prune
+//        for (int i = 0; i < (N * N) - 1; i++) {
+//            int row = (int) Math.floor((i) / N);
+//            int col = i % N;
+//            if(tileAt(row, col) != i + 1){
+//                return false;
+//            }
+//        }
+//        return true;
+        int index=1;
+        for(int i=0; i<N;i++){
+            for(int j=0;j<N;j++){
+                if(copyArr[i][j]!=index){
+                    return false;
+                }
+                index++;
             }
         }
         return true;
