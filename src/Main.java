@@ -49,13 +49,14 @@ public class Main {
 
 
 ////         check ida star function
-        SwitchingNumbers b = new SwitchingNumbers(25);
+        SwitchingNumbers b = new SwitchingNumbers(36);
        // int[][] small = {{ 5, 6,4},{3, 1, 2}, {7,8, 9}};
        // b.setPuzzle();
         System.out.println(b);
 
         ProblemSolver aStar=new IDAStar();
         aStar.solvePuzzle(b);
+        //test
     }
 
 }
