@@ -1,8 +1,10 @@
 import Problem.IGame;
 import Problem.SwitchingNumbers;
 import SearchAlgorithms.AStar;
+import SearchAlgorithms.BFS;
 import SearchAlgorithms.IDAStar;
 import SearchAlgorithms.ProblemSolver;
+import com.sun.xml.internal.bind.v2.model.core.ID;
 
 
 import java.util.Arrays;
@@ -49,9 +51,9 @@ public class Main {
 
 
 ////         check ida star function
-        SwitchingNumbers b = new SwitchingNumbers(36);
-       // int[][] small = {{ 5, 6,4},{3, 1, 2}, {7,8, 9}};
-       // b.setPuzzle();
+        SwitchingNumbers b = new SwitchingNumbers(100);
+        // int[][] small = {{ 5, 6,4},{3, 1, 2}, {7,8, 9}};
+        // b.setPuzzle();
         System.out.println(b);
 
         ProblemSolver aStar=new IDAStar();

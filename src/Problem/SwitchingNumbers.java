@@ -14,6 +14,8 @@ public class SwitchingNumbers implements IGame{
         this.g = g;
     }
 
+
+
     // cache
     private int hashCode = -1;
 
@@ -229,5 +231,6 @@ public class SwitchingNumbers implements IGame{
             System.exit(-1);
         }
     }
+
 
 }
