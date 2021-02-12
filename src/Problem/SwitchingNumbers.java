@@ -15,10 +15,6 @@ public class SwitchingNumbers implements IGame{
     }
 
 
-
-    // cache
-    private int hashCode = -1;
-
     private Collection<IGame> neighbors;
 
     public SwitchingNumbers(int [][] arr, int g,int n){
@@ -98,11 +94,6 @@ public class SwitchingNumbers implements IGame{
         return G() + H();
     }
 
-    public IGame getPrev() {
-        return prev;
-    }
-
-    private IGame prev = null;
 
     public SwitchingNumbers(int n) {
         //this.N = tiles.length;
@@ -215,10 +206,10 @@ public class SwitchingNumbers implements IGame{
         return (int)Math.ceil(res);
     }
 
-    public void setPuzzle(int[][] tiles){
+    public void setPuzzle(int[][] puzzle){
         for (int i = 0; i < N; i++) {
             for (int j = 0; j < N; j++) {
-                if (tiles[i][j] >= 1 && tiles[i][j] <= N*N) copyArr[i][j] = tiles[i][j];
+                if (puzzle[i][j] >= 1 && puzzle[i][j] <= N*N) copyArr[i][j] = puzzle[i][j];
                 else {
                     System.out.printf("Illegal tile value at (%d, %d): "
                             + "should be between 1 and N^2 .", i, j);

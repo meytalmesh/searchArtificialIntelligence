@@ -6,22 +6,22 @@ import Problem.SwitchingNumbers;
 import java.util.*;
 
 public class BFS implements ProblemSolver {
-    private LinkedList<IGame> open_list;
-    HashMap<IGame, Double> open_list_hash;
+    private LinkedList<IGame> open_size;
+    HashMap<IGame, Double> open_list;
     HashSet<IGame> closed_list_hash;
     private int g=0;
     @Override
     public void solvePuzzle(IGame game) {
         long start = System.currentTimeMillis();
-        open_list = new LinkedList<IGame> ();
+        open_size = new LinkedList<IGame> ();
 
-        open_list_hash = new HashMap<>();
+        open_list = new HashMap<>();
         closed_list_hash = new HashSet<>();
-        open_list.add(game);
+        open_size.add(game);
         IGame goal = null;
         long end = 0;
-        while (!open_list.isEmpty()){
-            IGame current = open_list.poll();
+        while (!open_size.isEmpty()){
+            IGame current = open_size.poll();
             if(current.isGoal()){
                 goal = current;
                 end = System.currentTimeMillis();
@@ -38,18 +38,18 @@ public class BFS implements ProblemSolver {
                     System.out.println(neighbor);
                     continue;
                 }
-                if(!open_list_hash.containsKey(neighbor)){
-                    open_list_hash.put(neighbor, neighbor.F());
-                    open_list.add(neighbor);
+                if(!open_list.containsKey(neighbor)){
+                    open_list.put(neighbor, neighbor.F());
+                    open_size.add(neighbor);
                 }else{
-                    double old_f = open_list_hash.get(neighbor);
+                    double old_f = open_list.get(neighbor);
                     if(old_f <= neighbor_cost){
                         continue;
                     }else{
-                        open_list_hash.remove(neighbor);
                         open_list.remove(neighbor);
-                        open_list.add(neighbor);
-                        open_list_hash.put(neighbor, neighbor.F());
+                        open_size.remove(neighbor);
+                        open_size.add(neighbor);
+                        open_list.put(neighbor, neighbor.F());
 
                     }
                 }
@@ -63,7 +63,7 @@ public class BFS implements ProblemSolver {
         float sec = (end - start) / 1000F;
         System.out.println("Time To Solve: "+sec + " seconds");
         System.out.println("Solution cost: "+cost);
-        System.out.println("Open size: "+ open_list.size());
+        System.out.println("Open size: "+ open_size.size());
         System.out.println("Expended: "+ closed_list_hash.size());
     }
 

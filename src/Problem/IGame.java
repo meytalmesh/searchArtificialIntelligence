@@ -9,7 +9,6 @@ public interface IGame {
     boolean isGoal();
     int G();
     double F();  //G+H
-    IGame getPrev();
     void setG(int g);
 
 }
