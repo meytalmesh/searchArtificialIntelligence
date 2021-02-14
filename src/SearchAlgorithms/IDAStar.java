@@ -16,7 +16,7 @@ public class IDAStar implements ProblemSolver{
 
     @Override
     public void solvePuzzle(IGame game) {
-        threshold=50;
+        threshold= (int)game.F();
         closed_list_hash = new HashSet<>();
         int numIteration=0;
         IGame goal= null;
