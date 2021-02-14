@@ -15,55 +15,72 @@ import java.util.LinkedList;
 public class Main {
 
     public static void main(String[] args) {
-//        SwitchingNumbers b = new SwitchingNumbers(9);
-//        int[][] small = {{3, 1, 2}, {4, 5, 6}, {7,8, 9}};
-//        b.setPuzzle(small);
-//        System.out.println(b);
-//        System.out.println(b.H());
-
-//        //check getNeighbors function
-//        SwitchingNumbers b = new SwitchingNumbers(9);
-//        int[][] small = {{3, 1, 2}, {4, 5, 6}, {7,8, 9}};
-//        b.setPuzzle(small);
-//
-//        Collection<IGame> temp=b.getNeighbors();
-//        for (IGame bourd : temp) {
-//            System.out.println(bourd);
-//        }
-
-//        //check is gaol function
-//        SwitchingNumbers b = new SwitchingNumbers(9);
-//        int[][] small1 = {{3, 1, 2}, {4, 5, 6}, {7,8, 9}};
-//        b.setPuzzle(small1);
-//        System.out.println(b.isGoal());
-//
-//        int[][] small2 = {{1, 2,3}, {4, 5, 6}, {7,8, 9}};
-//        b.setPuzzle(small2);
-//        System.out.println(b.isGoal());
-
-
-//           //check a star function
-//        SwitchingNumbers b = new SwitchingNumbers(9);
-//        int[][] small = {{3, 1, 2},{ 5, 6,4}, {7,8, 9}};
-//        b.setPuzzle(small);
-//        ProblemSolver aStar=new AStar();
-//        aStar.solvePuzzle(b);
-
-
-////         check ida star function
-        SwitchingNumbers b = new SwitchingNumbers(9);
-        int[][] small = {{ 3, 1,2},{4, 5, 6}, {7,8, 9}};
-        b.setPuzzle(small);
-        System.out.println(small);
-
         ProblemSolver idaStar=new IDAStar();
-        idaStar.solvePuzzle(b);
+        ProblemSolver aStar=new AStar();
 
-        System.out.println( b.F());
+        System.out.println("Board Size 9");
+        SwitchingNumbers b9 = new SwitchingNumbers(9);
+        System.out.println(b9);
+        System.out.println("------A* Result------");
+        aStar.solvePuzzle(b9);
+        System.out.println();
+        System.out.println("------IDA* Result------");
+        idaStar.solvePuzzle(b9);
 
-        //ProblemSolver aStar=new AStar();
-       // aStar.solvePuzzle(b);
-        //test
+        System.out.println("\n"+"Board Size 16");
+        SwitchingNumbers b16 = new SwitchingNumbers(16);
+        System.out.println(b16);
+        System.out.println("------A* Result------");
+        aStar.solvePuzzle(b16);
+        System.out.println();
+        System.out.println("------IDA* Result------");
+        idaStar.solvePuzzle(b16);
+
+        System.out.println("\n"+"Board Size 25");
+        SwitchingNumbers b25 = new SwitchingNumbers(25);
+        System.out.println(b25);
+        System.out.println("------A* Result------");
+        aStar.solvePuzzle(b25);
+        System.out.println();
+        System.out.println("------IDA* Result------");
+        idaStar.solvePuzzle(b25);
+
+        System.out.println("\n"+"Board Size 36");
+        SwitchingNumbers b36 = new SwitchingNumbers(36);
+        System.out.println(b36);
+        System.out.println("------A* Result------");
+        aStar.solvePuzzle(b36);
+        System.out.println();
+        System.out.println("------IDA* Result------");
+        idaStar.solvePuzzle(b36);
+
+        System.out.println("\n"+"Board Size 64");
+        SwitchingNumbers b64 = new SwitchingNumbers(64);
+        System.out.println(b64);
+        System.out.println("------A* Result------");
+        aStar.solvePuzzle(b64);
+        System.out.println();
+        System.out.println("------IDA* Result------");
+        idaStar.solvePuzzle(b64);
+
+        System.out.println("\n"+"Board Size 81");
+        SwitchingNumbers b81 = new SwitchingNumbers(81);
+        System.out.println(b81);
+        System.out.println("------A* Result------");
+        aStar.solvePuzzle(b81);
+        System.out.println();
+        System.out.println("------IDA* Result------");
+        idaStar.solvePuzzle(b81);
+
+        System.out.println("\n"+"Board Size 100");
+        SwitchingNumbers b100 = new SwitchingNumbers(100);
+        System.out.println(b100);
+        System.out.println("------A* Result------");
+        aStar.solvePuzzle(b100);
+        System.out.println();
+        System.out.println("------IDA* Result------");
+        idaStar.solvePuzzle(b100);
+
     }
 
 }
