@@ -51,13 +51,18 @@ public class Main {
 
 
 ////         check ida star function
-        SwitchingNumbers b = new SwitchingNumbers(100);
-        // int[][] small = {{ 5, 6,4},{3, 1, 2}, {7,8, 9}};
-        // b.setPuzzle();
-        System.out.println(b);
+        SwitchingNumbers b = new SwitchingNumbers(9);
+        int[][] small = {{ 3, 1,2},{4, 5, 6}, {7,8, 9}};
+        b.setPuzzle(small);
+        System.out.println(small);
 
-        ProblemSolver aStar=new IDAStar();
-        aStar.solvePuzzle(b);
+        ProblemSolver idaStar=new IDAStar();
+        idaStar.solvePuzzle(b);
+
+        System.out.println( b.F());
+
+        //ProblemSolver aStar=new AStar();
+       // aStar.solvePuzzle(b);
         //test
     }
 

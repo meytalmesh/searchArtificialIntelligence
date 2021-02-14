@@ -7,17 +7,16 @@ import java.util.*;
 
 public class IDAStar implements ProblemSolver{
 
-    private PriorityQueue<IGame> open_size;
-    private int minF=0;
+    private PriorityQueue<IGame> open_list;
+    private int threshold=0;
     private int g=0;
 
-    HashMap<IGame, Double> open_list;
+    HashMap<IGame, Double> open_list_hash;
     HashSet<IGame> closed_list_hash;
 
     @Override
     public void solvePuzzle(IGame game) {
-        minF=50;
-
+        threshold=50;
         closed_list_hash = new HashSet<>();
         int numIteration=0;
         IGame goal= null;
@@ -25,7 +24,7 @@ public class IDAStar implements ProblemSolver{
         IGame foundSolution=null;
         while(foundSolution == null){
             foundSolution=iteration(game);
-            minF++;
+            threshold++;
             numIteration++;
         }
         goal=foundSolution;
@@ -38,13 +37,13 @@ public class IDAStar implements ProblemSolver{
         System.out.println("Time To Solve: "+sec + " seconds");
         System.out.println("Iteration Number: "+numIteration);
         System.out.println("Solution cost: "+cost);
-        System.out.println("Open size: "+ open_size.size());
+        System.out.println("Open size: "+ open_list.size());
         System.out.println("Expended: "+ closed_list_hash.size());
 
     }
     private IGame iteration (IGame game){
         g=0;
-        open_size = new PriorityQueue<>(new Comparator<IGame>() {
+        open_list = new PriorityQueue<>(new Comparator<IGame>() {
             @Override
             public int compare(IGame o1, IGame o2) {
                 double o1_cost = o1.F();
@@ -53,13 +52,13 @@ public class IDAStar implements ProblemSolver{
             }
         });
 
-        open_list = new HashMap<>();
+        open_list_hash = new HashMap<>();
 
-        open_size.add(game);
+        open_list.add(game);
         IGame goal = null;
         long end = 0;
-        while (!open_size.isEmpty()){
-            IGame current = open_size.poll();
+        while (!open_list.isEmpty()){
+            IGame current = open_list.poll();
             if(current.isGoal()){
                 goal = current;
                 System.out.println("Goal found!");
@@ -73,21 +72,21 @@ public class IDAStar implements ProblemSolver{
                 neighbor.setG(g);
                 double neighbor_cost = neighbor.F();
 
-                if(closed_list_hash.contains(neighbor) || neighbor_cost>=minF){
+                if(closed_list_hash.contains(neighbor) || neighbor_cost>=threshold){
                     continue;
                 }
-                if(!open_list.containsKey(neighbor)){
-                    open_list.put(neighbor, neighbor.F());
-                    open_size.add(neighbor);
+                if(!open_list_hash.containsKey(neighbor)){
+                    open_list_hash.put(neighbor, neighbor.F());
+                    open_list.add(neighbor);
                 }else{
-                    double old_f = open_list.get(neighbor);
+                    double old_f = open_list_hash.get(neighbor);
                     if(old_f <= neighbor_cost){
                         continue;
                     }else{
+                        open_list_hash.remove(neighbor);
                         open_list.remove(neighbor);
-                        open_size.remove(neighbor);
-                        open_size.add(neighbor);
-                        open_list.put(neighbor, neighbor.F());
+                        open_list.add(neighbor);
+                        open_list_hash.put(neighbor, neighbor.F());
 
                     }
                 }
