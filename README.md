@@ -1,3 +1,6 @@
+## Written By
+Meytal Yaniv and Yasmin Avraham
+
 ## The Problem
 The problem we will explore with these algorithms is Switching Puzzle.
 The game board is a two-dimensional array with N * N cells. The sequence of numbers from 1 to N * N are arranged randomly between the cells of the array. Each time you can select a pair of neighboring cells and switch between them. The goal is to arrange the numbers in ascending order from left to right and from top to bottom at minimal cost.
@@ -14,5 +17,3 @@ idaStar.solvePuzzle(game);
 ProblemSolver aStar = new AStar();
 aStar.solvePuzzle(game);
 ```
-## Written By
-Meytal Yaniv and Yasmin Avraham
